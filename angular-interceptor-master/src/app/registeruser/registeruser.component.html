@@ -1,0 +1,42 @@
+<div class="container">
+  <div id="title" class="box">
+    <b>Registration</b>
+  </div>
+
+  <div class="fake">
+    <div id="us">
+      <b> User Name : <input type="text" name="username" [(ngModel)]="users.username"></b>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <br><br>
+    </div>
+    <div id="pwd">
+      <b>Password : <input type="password" name="password" [(ngModel)]="users.password"></b>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <br><br>
+    </div>
+    <div id="new">
+      <label for="name">Role:</label>
+      <select [(ngModel)]="users.role" (change)="setChangeHandler($event)">
+        <option value="" disabled selected>Choose Role</option>
+        <option>user</option>
+        <option>recruiter</option>
+      </select>
+    </div>
+    <div id="yu">
+      <button (click)="createUser()" class="btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <b>Register</b>
+      </button>
+    </div>
+  </div>
+
+</div>

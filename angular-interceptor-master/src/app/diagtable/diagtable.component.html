@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm bg-warning ">
+  <div><a class="navbar-brand">Job Portal</a></div>
+
+  <ul class="navbar-nav">
+
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/add" class="nav-link">Add New Job</a></li>
+    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/uf" class="nav-link">View Jobs</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/home" class="nav-link">LogOut</a></li>
+
+  </ul>
+
+</nav>
+<div class="container" style="padding-top:20px;">
+  <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;">
+
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Job ID</th>
+      <th>User name</th>
+      <th>Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of cand">
+      <td>{{d.job_ID}}</td>
+      <td>{{d.username}}</td>
+      <td>{{d.email}}</td>
+
+
+    </tr>
+  </tbody>
+  <!-- <ul class="pagination">  <pagination-controls (pageChange)="p = $event"></pagination-controls> </ul>   -->
+</table>

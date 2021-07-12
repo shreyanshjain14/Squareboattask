@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-sm bg-warning ">
+  <div><a class="navbar-brand">Job Portal</a></div>
+
+  <ul class="navbar-nav">
+    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/uf" class="nav-link">View Jobs</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/home" class="nav-link">LogOut</a></li>
+
+  </ul>
+
+</nav>
+
+<body>
+  <h2 class="text-center">Add new Job</h2><br><br>
+  <div id="fs" class="col-md-6 text-center">
+
+    <form>
+      <table>
+        <tr>
+          <div class="form-group">
+            <td><label for="pat_Name">Skill:</label></td>
+            <td><input type="name" [(ngModel)]="user.skills" placeholder="Skills" name="name" class="form-control"
+                id="pat_Name"></td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="form-group">
+            <td><label for="Age">Designation:</label></td>
+            <td><input [(ngModel)]="user.designation" placeholder="Designation" name="age" class="form-control"
+                id="age"></td>
+          </div>
+        </tr>
+        <br>
+        <tr>
+          <div class="form-group">
+            <td><label for="v_date">Location:</label></td>
+            <td><input [(ngModel)]="user.loaction" placeholder="Location" name="v_date" class="form-control"
+                id="v_date"></td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="form-group">
+            <td><label for="Last_vdate">CTC:</label></td>
+            <td><input [(ngModel)]="user.ctc" placeholder="CtcS" name="last_vdate" class="form-control" id="last_vdate">
+            </td>
+          </div>
+        </tr>
+        <br>
+
+        <tr>
+          <div class="form-group">
+            <td> <label for="name">Category:</label></td>
+            <td><select [(ngModel)]="user.cat" (change)="setChangeHandler($event)">
+                <option value="" disabled selected>Choose category</option>
+                <option *ngFor='let n of name2' value="{{n}}">{{n}}</option>
+              </select></td>
+          </div>
+        </tr>
+        <br>
+
+
+        <button class="btn btn-success" (click)="createjob()">Add</button>
+      </table>
+    </form>
+  </div>
+</body>

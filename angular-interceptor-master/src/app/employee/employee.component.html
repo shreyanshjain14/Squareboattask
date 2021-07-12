@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm bg-warning ">
+  <div><a class="navbar-brand">Job Portal</a></div>
+
+  <ul class="navbar-nav">
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="" class="nav-link">View Jobs</a></li>
+
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/home" class="nav-link">LogOut</a></li>
+
+  </ul>
+</nav>
+<br>
+<br>
+<h3>Available Jobs</h3>
+<div class="conatiner" style="padding-top:10px;">
+  <div class="col-sm-5" style="padding-top:10px;padding-bottom:20px;">
+
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th> Skills</th>
+      <th>Job ID</th>
+      <th>Designation</th>
+      <th>CTC</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees |paginate: { itemsPerPage: 7, currentPage: p }">
+      <td>{{employee.skills}}</td>
+      <td>{{employee.job_ID}}</td>
+      <td>{{employee.designation}}</td>
+      <td>{{employee.ctc}}</td>
+      <td>{{employee.cat}}</td>
+      <td><a [routerLink]="[ '/perio',employee.job_ID,employee.pat_Name]"><button class="btn btn-success">
+            Apply</button></a></td>
+    </tr>
+  </tbody>
+  <ul class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ul>
+</table>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-sm bg-warning ">
+  <div><a class="navbar-brand">Job Portal</a></div>
+
+  <ul class="navbar-nav">
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/diagt" class="nav-link">View Candidates</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/add" class="nav-link">Add New Job</a></li>
+    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/uf" class="nav-link">View Jobs</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/home" class="nav-link">LogOut</a></li>
+
+  </ul>
+
+</nav>
+<br>
+<h3>Your Added Jobs</h3>
+<div class="conatiner" style="padding-top:10px;">
+  <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;">
+
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Job ID</th>
+      <th> Skills</th>
+      <th>Designation</th>
+      <th>CTC</th>
+
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees |paginate: { itemsPerPage: 7, currentPage: p }">
+      <td>{{employee.job_ID}}</td>
+      <td>{{employee.skills}}</td>
+      <td>{{employee.designation}}</td>
+      <td>{{employee.ctc}}</td>
+      <td>{{employee.cat}}</td>
+
+    </tr>
+  </tbody>
+  <ul class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ul>
+</table>
